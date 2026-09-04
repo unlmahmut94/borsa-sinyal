@@ -2,8 +2,13 @@ name: Borsa Sinyal Otomasyonu
 
 on:
   schedule:
-    - cron: '30 6 * * 1-5'
-  workflow_dispatch:
+    # Hafta içi (Pazartesi-Cuma) günde 3 kez (Örn: 09:30, 13:30, 18:00 TR saati karşılığı UTC)
+    - cron: '30 6,10,15 * * 1-5'
+    
+    # Hafta sonu (Cumartesi-Pazar) sadece kripto/aktif piyasalar için günde 2 kez
+    - cron: '0 9,18 * * 6,7'
+    
+  workflow_dispatch: # Elle tetiklemek için
 
 jobs:
   tarama_calistir:
