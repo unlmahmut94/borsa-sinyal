@@ -1,0 +1,109 @@
+{
+    "_aciklama": "BorsaSinyal Pro Terminal - Merkezi Konfigürasyon",
+    "_versiyon": "3.2",
+    "_son_guncelleme": "2026-06-19",
+
+    "uygulama": {
+        "isim": "BorsaSinyal Pro",
+        "versiyon": "3.2",
+        "sayfa_basligi": "BorsaSinyal Pro",
+        "sayfa_ikonu": "◈",
+        "layout": "wide",
+        "sidebar_baslangic": "collapsed",
+        "otomatik_yenileme_saniye": 300,
+        "debug_modu": false
+    },
+
+    "dashboard": {
+        "takip_havuzu": [
+            "THYAO.IS", "GARAN.IS", "ASELS.IS", "EREGL.IS", "KCHOL.IS",
+            "AAPL", "MSFT", "NVDA", "AMZN", "META", "TSLA", "GOOGL", "GOOG", "AVGO", "COST",
+            "NFLX", "ASML", "AMD", "QCOM", "ADBE", "INTC", "INTU", "CSCO", "TXN", "AMAT",
+            "PYPL", "MU", "LRCX", "SBUX", "MDLZ", "REGN", "KLAC", "SNPS", "CDNS", "MRVL",
+            "CRM", "NOW", "SNOW", "PLTR", "UBER", "ABNB", "DASH", "RBLX", "COIN",
+            "ARM", "SMCI", "RDDT", "AI", "HOOD", "SOFI", "CRWD", "ZS", "NET", "DDOG",
+            "MDB", "GTLB", "HUBS", "WDAY", "TEAM", "PANW", "FTNT", "SHOP", "SPOT", "PINS",
+            "AMGN", "GILD", "MRNA", "BNTX", "ILMN",
+            "BABA", "JD", "PDD", "MELI", "SE",
+            "PATH", "BBAI", "SOUN",
+            "RIVN", "LCID", "NIO",
+            "EA", "TTWO"
+        ],
+        "populer_hisseler": [
+            {"sembol": "THYAO.IS", "isim": "Türk Hava Yolları"},
+            {"sembol": "AAPL", "isim": "Apple Inc."},
+            {"sembol": "GARAN.IS", "isim": "Garanti BBVA Bankası"},
+            {"sembol": "NVDA", "isim": "NVIDIA Corporation"},
+            {"sembol": "KCHOL.IS", "isim": "Koç Holding"}
+        ],
+        "populer_haber_sembolleri": [
+            "THYAO.IS", "GARAN.IS", "AAPL", "NVDA", "TSLA", "META",
+            "AMZN", "MSFT", "GOOGL", "PLTR", "COIN", "RBLX",
+            "AMD", "NFLX", "SNOW", "CRWD", "BABA", "SHOP"
+        ],
+        "endeks_gosterge_sayisi": 6,
+        "liste_baslik_sayisi": 5
+    },
+
+    "tarayici": {
+        "batch_boyutu": 50,
+        "batch_arasi_saniye": 90,
+        "tam_tur_arasi_saniye": 60,
+        "max_workers": 6,
+        "crash_bekleme_saniye": 30,
+        "tarama_periyot": "1mo"
+    },
+
+    "ml_egitim": {
+        "model_dizini": "modeller",
+        "log_dosyasi": "logs/ml_egitim.log",
+        "egitim_log_dosyasi": "logs/egitim_log.txt",
+        "log_max_bytes": 10485760,
+        "log_yedek_sayisi": 3,
+        "varsayilan_n_estimators": 200,
+        "varsayilan_max_depth": 6,
+        "varsayilan_learning_rate": 0.05,
+        "varsayilan_subsample": 0.8,
+        "varsayilan_colsample_bytree": 0.8,
+        "walk_forward_n_splits": 5,
+        "ensemble_aktif": true,
+        "shap_aktif": true,
+        "optuna_aktif": true,
+        "optuna_n_trials": 100,
+        "feature_min_thresh": 5
+    },
+
+    "api": {
+        "aktif": true,
+        "host": "0.0.0.0",
+        "port": 8502,
+        "rate_limit_aktif": true,
+        "rate_limit_dakika_basina": 30,
+        "api_anahtari_gerekli": false,
+        "cors_izinleri": ["*"]
+    },
+
+    "cache": {
+        "varsayilan_ttl_saniye": 300,
+        "makro_veri_ttl": 300,
+        "haber_ttl": 300,
+        "fiyat_ttl": 60,
+        "endeks_ttl": 300,
+        "teknik_sinyal_ttl": 300
+    },
+
+    "loglama": {
+        "dizin": "logs",
+        "max_bytes": 10485760,
+        "yedek_sayisi": 5,
+        "debug_konsol": false,
+        "telegram_bildirim_aktif": true
+    },
+
+    "guvenlik": {
+        "session_sifreleme_aktif": true,
+        "max_basarisiz_giris": 5,
+        "kilitlenme_suresi_dakika": 15,
+        "circuit_breaker_aktif": true
+    }
+}

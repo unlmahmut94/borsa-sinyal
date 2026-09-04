@@ -1,0 +1,75 @@
+# BorsaSinyal Pro — Git Ignore
+# Son güncelleme: 15.06.2026
+
+# ── Gizli anahtarlar ve yapılandırma ──
+.env
+*.env
+!.env.example
+
+# ── Veritabanları ──
+*.db
+*.sqlite
+*.sqlite3
+ai_hafiza.*
+
+# ── Eğitilmiş ML Modelleri ──
+modeller/
+*.pkl
+*.joblib
+*.h5
+*.keras
+
+# ── Log Dosyaları ──
+logs/
+*.log
+_sl_log.txt
+egitim_log.txt
+ml_egitim.log
+
+# ── Eğitim Durum Dosyaları ──
+.egitim_checkpoint.json
+.egitim_durum.txt
+egitim_model_listesi.txt
+model_listesi.txt
+
+# ── Sinyal Kalite ve Geçmiş ──
+sinyal_kalite_agirliklari.json
+ban_gecmisi.json
+formasyon_basari_gecmisi.json
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.pytest_cache/
+.mypy_cache/
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Streamlit ──
+.streamlit/
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ── Jupyter ──
+.ipynb_checkpoints/
+
+# ── Sanal Ortam ──
+venv/
+env/
+.venv/
+.env/

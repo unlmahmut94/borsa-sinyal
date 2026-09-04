@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THYAO · BorsaSinyal TradingView</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background:#0a1222;
+    color:#d1d4dc;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding:12px;
+    overflow-x:hidden;
+}
+.tv-container {
+    background:#131722;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid rgba(30,51,85,0.3);
+    box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.header {
+    display:flex;align-items:center;gap:16px;
+    padding:14px 20px;
+    background:linear-gradient(135deg,#0e182c,#131722);
+    border-bottom:1px solid rgba(30,51,85,0.3);
+}
+.header h1 {
+    font-size:18px;font-weight:800;letter-spacing:-0.5px;
+    background:linear-gradient(135deg,#eef2f7,#f0c040);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.header .time {
+    font-family:monospace;font-size:11px;color:#787b86;letter-spacing:1px;
+    margin-left:auto;
+}
+.header .live {
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:monospace;font-size:10px;color:#089981;letter-spacing:1px;
+}
+.header .live::before {
+    content:'';width:8px;height:8px;background:#089981;border-radius:50%;
+    box-shadow:0 0 8px rgba(8,153,129,0.6);
+}
+.panel {
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:16px;
+    margin-top:12px;
+}
+@media (max-width:900px) {
+    .panel { grid-template-columns: 1fr; }
+}
+.sidebar {
+    background:rgba(14,24,44,0.6);
+    border-radius:12px;
+    padding:20px;
+    border:1px solid rgba(30,51,85,0.2);
+    max-height:800px;
+    overflow-y:auto;
+}
+.sidebar::-webkit-scrollbar { width:4px; }
+.sidebar::-webkit-scrollbar-thumb { background:rgba(30,51,85,0.5); border-radius:2px; }
+.footer {
+    text-align:center;padding:16px;margin-top:12px;
+    font-family:monospace;font-size:10px;color:rgba(120,123,134,0.4);letter-spacing:1px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📊 THYAO · TRADINGVIEW</h1>
+    <span class="live">LIVE</span>
+    <span class="time">20.06.2026 20:38</span>
+</div>
+
+<div class="panel">
+    <div class="tv-container" style="min-height:750px;">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container" style="height:750px;width:100%;">
+            <div id="tvchart" style="height:750px;width:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js">
+            </script>
+            <script type="text/javascript">
+            new TradingView.widget({
+                "container_id": "tvchart",
+                "width": "100%",
+                "height": "750",
+                "symbol": "BIST:THYAO",
+                "interval": "D",
+                "timezone": "Europe/Istanbul",
+                "theme": "dark",
+                "style": "1",
+                "locale": "tr_TR",
+                "toolbar_bg": "#131722",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "save_image": false,
+                "studies": [
+                    "RSI@tv-basicstudies",
+                    "MACD@tv-basicstudies",
+                    "Volume@tv-basicstudies"
+                ],
+                "studies_overrides": {
+                    "volume.volume.color.0": "#f23645",
+                    "volume.volume.color.1": "#089981"
+                },
+                "overrides": {
+                    "mainSeriesProperties.candleStyle.upColor": "#089981",
+                    "mainSeriesProperties.candleStyle.downColor": "#f23645",
+                    "mainSeriesProperties.candleStyle.drawWick": true,
+                    "mainSeriesProperties.candleStyle.drawBody": true,
+                    "mainSeriesProperties.candleStyle.borderUpColor": "#089981",
+                    "mainSeriesProperties.candleStyle.borderDownColor": "#f23645",
+                    "mainSeriesProperties.candleStyle.wickUpColor": "#089981",
+                    "mainSeriesProperties.candleStyle.wickDownColor": "#f23645",
+                    "paneProperties.background": "#131722",
+                    "paneProperties.vertGridProperties.color": "rgba(255,255,255,0.04)",
+                    "paneProperties.horzGridProperties.color": "rgba(255,255,255,0.04)",
+                    "scalesProperties.textColor": "#787b86",
+                    "scalesProperties.lineColor": "rgba(255,255,255,0.08)",
+                },
+                "disabled_features": [
+                    "header_symbol_search", "symbol_search_hot_key",
+                    "header_volume", "header_saveload",
+                    "header_indicators", "header_compare",
+                    "header_chart_type", "header_undo_redo"
+                ],
+                "enabled_features": ["study_templates"],
+                "loading_screen": { "backgroundColor": "#131722" },
+            });
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+    
+    <div class="sidebar">
+        <div style="font-family:monospace;font-size:10px;color:#787b86;letter-spacing:2px;
+                    margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+            <span style="width:20px;height:2px;background:#f0c040;display:inline-block;border-radius:1px;"></span>
+            BORSASİNYAL PRO · ANALİZ
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(30,51,85,0.5),transparent);"></span>
+        </div>
+        
+        <!-- Hisse bilgisi -->
+        <div style="background:rgba(30,34,45,0.5);border-radius:8px;padding:16px;margin-bottom:16px;
+                    border:1px solid rgba(30,51,85,0.15);">
+            <div style="font-family:monospace;font-size:22px;font-weight:800;color:#eef2f7;">
+                THYAO
+            </div>
+            <div style="font-family:monospace;font-size:11px;color:#787b86;margin-top:4px;">
+                BIST · THYAO.IS
+            </div>
+        </div>
+        
+        <!-- Yardım -->
+        <div style="background:rgba(240,192,64,0.06);border-radius:8px;padding:14px;margin-bottom:16px;
+                    border:1px solid rgba(240,192,64,0.12);">
+            <div style="font-family:monospace;font-size:10px;color:#f0c040;margin-bottom:6px;">
+                💡 İPUÇLARI
+            </div>
+            <ul style="margin:0;padding-left:16px;font-size:11px;color:#8a9bb5;">
+                <li style="margin-bottom:4px;">📈 Fare tekerleği ile yakınlaşma</li>
+                <li style="margin-bottom:4px;">🔄 Sağ tık + sürükle = kaydırma</li>
+                <li style="margin-bottom:4px;">📊 Alt göstergeler: RSI, MACD, Hacim</li>
+                <li>⚙️ Üst menüden çizim araçları ekleyin</li>
+            </ul>
+        </div>
+        
+        
+        <div style="margin-top:16px;">
+            <div style="font-family:monospace;font-size:11px;color:#f0c040;letter-spacing:2px;
+                        margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+                <span style="width:20px;height:2px;background:#f0c040;display:inline-block;border-radius:1px;"></span>
+                📊 TESPİT EDİLEN FORMASYONLAR
+                <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(30,51,85,0.5),transparent);"></span>
+            </div>
+            
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(30,34,45,0.8);
+                        border-left:3px solid #089981;border-radius:6px;padding:8px 14px;margin-bottom:6px;">
+                <span>✅</span>
+                <span style="color:#089981;font-weight:600;">İkili Dip (W)</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(30,34,45,0.8);
+                        border-left:3px solid #089981;border-radius:6px;padding:8px 14px;margin-bottom:6px;">
+                <span>✅</span>
+                <span style="color:#089981;font-weight:600;">↗ Yükselen Trend</span>
+            </div>
+        </div>
+        
+        <div style="margin-top:16px;">
+            <div style="font-family:monospace;font-size:11px;color:#4db8ff;letter-spacing:2px;
+                        margin-bottom:12px;display:flex;align-items:center;gap:10px;">
+                <span style="width:20px;height:2px;background:#4db8ff;display:inline-block;border-radius:1px;"></span>
+                📋 TEKNİK ANALİZ NOTLARI
+                <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(30,51,85,0.5),transparent);"></span>
+            </div>
+            <ul style="margin:0;padding-left:20px;"><li style='padding:4px 0;color:#d1d4dc;font-size:13px;'>📌 İkili Dip (W) formasyonu tespit edildi</li><li style='padding:4px 0;color:#d1d4dc;font-size:13px;'>📌 ↗ Yükselen Trend formasyonu tespit edildi</li></ul>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    BorsaSinyal Pro Terminal · TradingView Widget · 20.06.2026 20:38
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+# ══════════════════════════════════════════════════════════════════════
+#  docker-compose.yml — BorsaSinyal Pro Terminal
+#  Streamlit UI + REST API aynı container'da
+# ══════════════════════════════════════════════════════════════════════
+
+version: "3.9"
+
+services:
+  borsasinyal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: borsasinyal-pro
+    ports:
+      - "8501:8501"   # Streamlit UI
+      - "8502:8502"   # REST API (manuel başlatılır)
+    volumes:
+      # Kalıcı veri dizinleri
+      - ./logs:/app/logs
+      - ./modeller:/app/modeller
+      - ./ai_hafiza.db:/app/ai_hafiza.db
+      - ./dead_semboller.json:/app/dead_semboller.json
+      - ./bekleyen_takip_raporu.json:/app/bekleyen_takip_raporu.json
+      # Konfigürasyon (read-only)
+      - ./app_config.json:/app/app_config.json:ro
+      - ./strateji_config.json:/app/strateji_config.json:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_HEADLESS=true
+      - BORSASINYAL_API_KEY=${BORSASINYAL_API_KEY:-}
+      - TZ=Europe/Istanbul
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
