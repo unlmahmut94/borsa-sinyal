@@ -192,10 +192,19 @@ def filtreleme_paneli(hisse_analiz_paneli_fn):
         if "Hızlı" in tarama_kaynagi:
             txt.info("Veritabanındaki aktif sinyaller çekiliyor ve fiyatları güncelleniyor...")
             try:
-                conn = sqlite3.connect(DB_YOLU)
-                df = pd.read_sql_query("SELECT hisse as Hisse, sinyal_tipi as Sinyal, giris_fiyati as 'Son Fiyat' FROM ai_sinyaller WHERE durum='BEKLIYOR' ORDER BY id DESC", conn)
-                conn.close()
-
+                from supabase_baglanti import supabase
+                response = supabase.table("ai_sinyaller").select("hisse, sinyal_tipi, giris_fiyati").eq("durum", "BEKLIYOR").order("id", desc=True).execute()
+                
+                if response.data:
+                    df = pd.DataFrame(response.data)
+                    # Sütun isimlerini arayüzün beklediği formata çeviriyoruz
+                    df = df.rename(columns={
+                        "hisse": "Hisse",
+                        "sinyal_tipi": "Sinyal",
+                        "giris_fiyati": "Son Fiyat"
+                    })
+                else:
+                    df = pd.DataFrame()
                 if not df.empty:
                     df["RSI"] = 50.0
                     df["Değişim %"] = 0.0

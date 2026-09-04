@@ -10,7 +10,7 @@ from hisseler_nasdaq import NASDAQ
 from hisseler_sp500 import SP500
 from hisseler_kripto import KRIPTO_LISTESI
 from mod_hafiza import sinyal_kaydet, bekleyenleri_kontrol_et
-
+from supabase_baglanti import supabase
 from collections import deque
 import time
 
@@ -145,13 +145,20 @@ def firsat_kaydet(row):
     
     stop_fiyat = round(fiyat * (1 - stop_yuzde), 2)
     
-    sinyal_kaydet(
-        hisse=hisse,
-        sinyal_tipi="GUCLU AL",
-        giris_fiyat=fiyat,
-        hedef_fiyat=hedef_fiyat,
-        stop_fiyat=stop_fiyat
-    )
+ # Bulut Supabase tablosuna anında yazıyoruz
+    try:
+        yeni_kayit = {
+            "tarih": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "hisse": hisse,
+            "sinyal_tipi": "GUCLU AL",
+            "giris_fiyati": float(fiyat),
+            "hedef_fiyat": float(hedef_fiyat),
+            "stop_fiyat": float(stop_fiyat),
+            "durum": "BEKLIYOR"
+        }
+        supabase.table("ai_sinyaller").insert(yeni_kayit).execute()
+    except Exception as sb_err:
+        print(f"  ⚠ Supabase bulut kayıt hatası: {sb_err}")   
     print(f"  🔥 FIRSAT: {hisse} | Giriş: {fiyat:.2f} | Hedef: {hedef_fiyat:.2f} (%{hedef_yuzde*100:.1f}) | Stop: {stop_fiyat:.2f} (%{stop_yuzde*100:.1f} · ATR×{atr_carpani})")
     return True
 
