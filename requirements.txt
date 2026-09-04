@@ -30,7 +30,7 @@ pandas-ta
 optuna
 
 # ── SHAP (Model Açıklanabilirliği) ────────────────────────────────
-shap
+#shap
 
 # ── NLP & Sentiment ────────────────────────────────────────────────
 #transformers
