@@ -44,3 +44,4 @@ python-telegram-bot
 
 # ── Otomatik Yenileme (Opsiyonel) ─────────────────────────────────
 # streamlit-autorefresh
+filelock
