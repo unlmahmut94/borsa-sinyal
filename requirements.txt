@@ -33,9 +33,9 @@ optuna
 shap
 
 # ── NLP & Sentiment ────────────────────────────────────────────────
-transformers
-torch
-vaderSentiment
+#transformers
+#torch
+#vaderSentiment
 
 # ── Çeviri & HTTP ──────────────────────────────────────────────────
 deep-translator
