@@ -1,6 +1,4 @@
 # Borsa Sinyal Pro Terminal v3.0 — Python Bağımlılıkları
-# Kurulum: pip install -r requirements.txt
-# Son güncelleme: 15.06.2026 (Eksik paketler eklendi)
 
 # ── Veri Çekme & Fiyat ─────────────────────────────────────────────
 yfinance
@@ -19,9 +17,9 @@ numpy
 # ── Makine Öğrenmesi ──────────────────────────────────────────────
 scikit-learn
 xgboost
-lightgbm
-catboost
 joblib
+# lightgbm (Bulut kurulum hatasını önlemek için kapatıldı)
+# catboost (Bulut kurulum hatasını önlemek için kapatıldı)
 
 # ── Teknik Analiz ──────────────────────────────────────────────────
 pandas-ta
@@ -30,12 +28,12 @@ pandas-ta
 optuna
 
 # ── SHAP (Model Açıklanabilirliği) ────────────────────────────────
-#shap
+# shap
 
 # ── NLP & Sentiment ────────────────────────────────────────────────
-#transformers
-#torch
-#vaderSentiment
+# transformers
+# torch
+# vaderSentiment
 
 # ── Çeviri & HTTP ──────────────────────────────────────────────────
 deep-translator
@@ -45,4 +43,4 @@ requests
 python-telegram-bot
 
 # ── Otomatik Yenileme (Opsiyonel) ─────────────────────────────────
-# streamlit-autorefresh  (yüklü değilse app.py fallback mekanizması kullanır)
+# streamlit-autorefresh
