@@ -3,46 +3,46 @@
 # Son güncelleme: 15.06.2026 (Eksik paketler eklendi)
 
 # ── Veri Çekme & Fiyat ─────────────────────────────────────────────
-yfinance>=1.4.0
-python-binance>=1.0.36
-ccxt>=4.4.0
-pandas-datareader>=0.10.0
+yfinance
+python-binance
+ccxt
+pandas-datareader
 
 # ── Streamlit & Görselleştirme ─────────────────────────────────────
-streamlit>=1.55.0
-plotly>=6.6.0
+streamlit
+plotly
 
 # ── Veri İşleme ────────────────────────────────────────────────────
-pandas>=2.3.0
-numpy>=2.2.0
+pandas
+numpy
 
 # ── Makine Öğrenmesi ──────────────────────────────────────────────
-scikit-learn>=1.8.0
-xgboost>=3.2.0
-lightgbm>=4.6.0
-catboost>=1.4.0
-joblib>=1.5.0
+scikit-learn
+xgboost
+lightgbm
+catboost
+joblib
 
 # ── Teknik Analiz ──────────────────────────────────────────────────
 pandas-ta
 
 # ── Hiperparametre Optimizasyonu ──────────────────────────────────
-optuna>=4.9.0
+optuna
 
 # ── SHAP (Model Açıklanabilirliği) ────────────────────────────────
-shap>=0.46.0
+shap
 
 # ── NLP & Sentiment ────────────────────────────────────────────────
-transformers>=4.40.0
-torch>=2.3.0
-vaderSentiment>=3.3.0
+transformers
+torch
+vaderSentiment
 
 # ── Çeviri & HTTP ──────────────────────────────────────────────────
-deep-translator>=1.11.0
-requests>=2.34.0
+deep-translator
+requests
 
 # ── Telegram Bildirim (Opsiyonel) ─────────────────────────────────
-python-telegram-bot>=21.0
+python-telegram-bot
 
 # ── Otomatik Yenileme (Opsiyonel) ─────────────────────────────────
 # streamlit-autorefresh  (yüklü değilse app.py fallback mekanizması kullanır)
