@@ -21,8 +21,7 @@ joblib
 # lightgbm (Bulut kurulum hatasını önlemek için kapatıldı)
 # catboost (Bulut kurulum hatasını önlemek için kapatıldı)
 
-# ── Teknik Analiz ──────────────────────────────────────────────────
-pandas-ta
+# ── Teknik Analiz ──────────────────────────────────────────────────sss
 
 # ── Hiperparametre Optimizasyonu ──────────────────────────────────
 optuna
