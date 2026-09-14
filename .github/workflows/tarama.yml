@@ -1,36 +1,29 @@
-name: Borsa Sinyal Otomasyonu
+name: 7/24 Otomatik Tarama
 
 on:
   schedule:
-    # Hafta içi (Pazartesi-Cuma) günde 3 kez piyasa saatlerinde
-    - cron: '30 6,10,15 * * 1-5'
-    
-    # Hafta sonu (Cumartesi-Pazar) kripto için her 4 saatte bir
-    - cron: '0 */4 * * 6,7'
-    
-  workflow_dispatch:
+    - cron: '*/40 * * * *' 
+  workflow_dispatch: 
+
 jobs:
-  tarama_calistir:
+  tarama-yap:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Kodlari Indir
-      uses: actions/checkout@v4
+      - name: Kodları Çek
+        uses: actions/checkout@v3
 
-    - name: Python Kur
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Bagimliliklari Yukle
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Kütüphaneleri Yükle
+        run: |
+          pip install -r requirements.txt
 
-    - name: Tarama Motorunu Baslat
-      env:
-        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: |
-        python tarama_motoru.py
+      - name: Botu Çalıştır
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          python otomatik_tarayici.py
